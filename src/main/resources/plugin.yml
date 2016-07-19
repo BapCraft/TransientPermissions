@@ -1,0 +1,4 @@
+name: TransientPermissions
+author: treyzania
+main: com.bapcraft.transientperms.TransientPermissionsPlugin
+version: ${project.version}
