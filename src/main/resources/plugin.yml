@@ -2,3 +2,8 @@ name: TransientPermissions
 author: treyzania
 main: com.bapcraft.transientperms.TransientPermissionsPlugin
 version: ${project.version}
+commands:
+    applytempperm:
+        aliases: [tempapply, tempperm]
+        description: Applies the given permission group the the specificed player.
+        usage: /applytempperm <player name> <group> <duration in ticks>

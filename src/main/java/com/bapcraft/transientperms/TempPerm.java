@@ -1,32 +1,29 @@
 package com.bapcraft.transientperms;
 
+import java.util.List;
+
 import org.bukkit.Bukkit;
+import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 import org.bukkit.permissions.PermissionAttachment;
 
 public class TempPerm {
 	
 	public final Player player;
-	public final String permission;
-	public final boolean state;
+	public final List<String> permissions;
 	
 	public final long durationTicks;
 	
 	private int applications = 0;
 	private int expirations = 0;
 	
-	public TempPerm(Player p, String perm, boolean state, long dur) {
+	public TempPerm(Player p, List<String> perms, long dur) {
 		
 		this.player = p;
-		this.permission = perm;
-		this.state = state;
+		this.permissions = perms;
 		
 		this.durationTicks = dur;
 		
-	}
-	
-	public TempPerm(Player p, String perm, long dur) {
-		this(p, perm, true, dur);
 	}
 	
 	public void apply() {
@@ -34,7 +31,7 @@ public class TempPerm {
 		final PermissionAttachment at = this.player.addAttachment(TransientPermissionsPlugin.instance);
 		
 		// Add the permission.
-		at.setPermission(this.permission, this.state);
+		this.permissions.forEach(s -> at.setPermission(s, true));
 		this.player.recalculatePermissions();
 		
 		this.applications++;
@@ -44,6 +41,7 @@ public class TempPerm {
 			
 			this.player.removeAttachment(at);
 			this.player.recalculatePermissions();
+			this.player.sendMessage(ChatColor.RED + "Your extra permissions have expired.");
 			
 			this.expirations++;
 			
