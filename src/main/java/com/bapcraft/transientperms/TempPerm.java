@@ -1,5 +1,6 @@
 package com.bapcraft.transientperms;
 
+import java.util.Arrays;
 import java.util.List;
 
 import org.bukkit.Bukkit;
@@ -36,6 +37,8 @@ public class TempPerm {
 		
 		this.applications++;
 		
+		Bukkit.getLogger().info("Applied " + this.permissions.size() + " permissions (" + Arrays.toString(this.permissions.toArray()) + ") to " + this.player.getName());
+		
 		// Now remove it later.
 		Bukkit.getScheduler().scheduleSyncDelayedTask(TransientPermissionsPlugin.instance, () -> {
 			
@@ -44,6 +47,8 @@ public class TempPerm {
 			this.player.sendMessage(ChatColor.RED + "Your extra permissions have expired.");
 			
 			this.expirations++;
+			
+			Bukkit.getLogger().info("The " + this.permissions.size() + " on " + this.player.getName() + " have expired.");
 			
 		}, this.durationTicks);
 		
