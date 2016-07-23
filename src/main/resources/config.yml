@@ -1,8 +1,8 @@
 # Config for TransientPermissions ( GitHub.com/Bapcraft/TransientPermissions )
 
 groups:
-    Test1337:
+    foo:
         - essentials.hat
-    Test420:
+    bar:
         - essentials.god
         - essentials.fly
