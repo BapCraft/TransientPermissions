@@ -19,13 +19,6 @@ public class ApplyPermissionCommand implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 		
-		if (!(sender.isOp() || sender.hasPermission(Perms.CMD_APPLY_PERMISSION))) {
-			
-			sender.sendMessage("You do not have permission to use this command");
-			return true;
-			
-		}
-		
 		// Invalid arguments.
 		if (args.length != 3) return false;
 		
@@ -33,6 +26,13 @@ public class ApplyPermissionCommand implements CommandExecutor {
 		String applyeeStr = args[0];
 		String group = args[1];
 		String durationStr = args[2];
+		
+		if (!(sender.isOp() || sender.hasPermission(Perms.CMD_APPLY_PERMISSION) || sender.hasPermission(Perms.CMD_APPLY_PERM_SPECIFIC(group)))) {
+			
+			sender.sendMessage(ChatColor.RED + "You do not have permission to use this command! (Try a different permission group?)");
+			return true;
+			
+		}
 		
 		// Parse username
 		Player applyee = Bukkit.getPlayer(applyeeStr);
