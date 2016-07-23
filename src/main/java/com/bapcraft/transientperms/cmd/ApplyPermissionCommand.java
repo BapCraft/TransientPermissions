@@ -69,8 +69,8 @@ public class ApplyPermissionCommand implements CommandExecutor {
 		// Then apply and report.
 		TransientPermissionsPlugin.instance.applyTempPermissions(perm);
 		long secs = duration / 20;
-		sender.sendMessage(ChatColor.GREEN + "Applied " + permissions.size() + " permission(s) to " + applyee.getName() + "!  They will expire in ~" + secs + " tick(s), or when they log out.");
-		applyee.sendMessage(ChatColor.GREEN + "You have been given the \"" + group + "\" set of permissions for ~" + secs + " seconds!");
+		sender.sendMessage(ChatColor.GREEN + "Applied " + permissions.size() + " permission(s) to " + applyee.getName() + "!  They will expire in ~" + secs + " second(s), or when they log out.");
+		applyee.sendMessage(ChatColor.GREEN + "You have been given the \"" + group + "\" set of permissions for ~" + secs + " second(s)!");
 		
 		return true;
 		
