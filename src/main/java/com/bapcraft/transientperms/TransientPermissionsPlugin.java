@@ -1,5 +1,6 @@
 package com.bapcraft.transientperms;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -24,6 +25,8 @@ public class TransientPermissionsPlugin extends JavaPlugin {
 		
 		instance = this;
 		
+		this.activePermissions = new ArrayList<>();
+		
 		this.saveDefaultConfig();
 		this.loadConfig();
 		
@@ -33,8 +36,6 @@ public class TransientPermissionsPlugin extends JavaPlugin {
 	
 	@Override
 	public void onDisable() {
-		
-		this.permGroups = null;
 		
 		instance = null;
 		
