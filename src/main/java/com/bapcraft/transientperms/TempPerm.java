@@ -42,9 +42,13 @@ public class TempPerm {
 		// Now remove it later.
 		Bukkit.getScheduler().scheduleSyncDelayedTask(TransientPermissionsPlugin.instance, () -> {
 			
-			this.player.removeAttachment(at);
-			this.player.recalculatePermissions();
-			this.player.sendMessage(ChatColor.RED + "Your extra permissions have expired.");
+			if (this.player.isOnline()) {
+				
+				this.player.removeAttachment(at);
+				this.player.recalculatePermissions();
+				this.player.sendMessage(ChatColor.RED + "Your extra permissions have expired.");
+				
+			}
 			
 			this.expirations++;
 			
